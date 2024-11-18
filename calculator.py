@@ -3,23 +3,31 @@ class Calculator:
         return a + b
 
     def subtract(self, a, b):
-        return b - a
+        return a - b
 
     def multiply(self, a, b):
         result = 0
-        for i in range(b+1):
+        if a == 0 or b == 0:
+                return 0
+        for i in range(b):
             result = self.add(result, a)
         return result
 
     def divide(self, a, b):
         result = 0
-        while a > b:
+        # Add before the loop
+        if b == 0:
+            raise ZeroDivisionError("Division by zero is not allowed.")
+        while a >= b:
             a = self.subtract(a, b)
             result += 1
         return result
     
     def modulo(self, a, b):
-        while a <= b:
+        # Add before the loop
+        if b == 0:
+            raise ZeroDivisionError("Modulo by zero is not allowed.")
+        while a >= b:
             a = a-b
         return a
 
